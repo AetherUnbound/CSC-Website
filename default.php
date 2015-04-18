@@ -27,6 +27,8 @@ header("Pragma: no-cache");   // HTTP/1.0
 	</marquee>
 	</div>
 
+	
+	<!dingle>
 <hr>
 <span><center><b>W E L C O M E</b></center></span>
 <hr>
@@ -38,7 +40,7 @@ http://<b><?php echo "$_SERVER[SERVER_NAME]"; ?></b><br />
 <H1>
 <font color="blue">
 <marquee scrollamount="20"><b>/!\ This is the webpage of the REAL Matt /!\ </b></marquee>
-<iframe width="1" height="1" src="https://www.youtube.com/embed/vCw9cfMXvFY?autoplay=1" frameborder="0" allowfullscreen></iframe>
+<!<iframe width="1" height="1" src="https://www.youtube.com/embed/vCw9cfMXvFY?autoplay=1" frameborder="0" allowfullscreen><!</iframe>
 </font>
 </H1>
 <center>
@@ -66,14 +68,12 @@ Hello Un-Matt :^)
 </H3>
 
 <hr />
-
-<table>
-<tr>
-	<td>PATH_TRANSLATED:&nbsp;&nbsp;&nbsp;</td>
-	<td><?php echo "$_SERVER[PATH_TRANSLATED]"; ?></td>
-</tr>
-</table>
+<a href="helloworld.php"><H2>GOTO Hello World.php</h2></a>
 <hr />
+<a href="howdydoody.html"><h2>GOTO Howdy Doody.html</h2></a>
+<hr />
+
+
 
 
 <?php
