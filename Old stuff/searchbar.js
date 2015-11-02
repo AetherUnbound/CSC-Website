@@ -1,0 +1,1 @@
+//search bar animate js

@@ -1,0 +1,92 @@
+/*-----------------------
+    Quote Page Table
+-----------------------*/
+.tablelayout {
+  display:table;
+  width:85vh;
+  text-align:center;
+  margin: auto;
+}
+.tablelayout h1.cellnobord {
+  width: 25%;
+  color: #006993;
+  background-color: #CCCCCC;
+  border-bottom: 4px solid white;
+  vertical-align: 30%;
+  line-height: 40vh;
+}
+
+
+.cell {
+  display:table-cell;
+  vertical-align:middle;
+  width: 50%;
+  border-bottom: 4px solid white;
+} 
+
+
+
+.cellnobord {
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+  width: 50%;
+  border-bottom: none;
+  border-right: 2px solid white;
+}
+
+.row .right {
+	text-align: right;
+}
+
+.row .left {
+	text-align: left;
+}
+
+.row {
+  display:table-row;
+   transition: .2s background-color, color, font-weight;  
+  -webkit-transition: .2s background-color, color, font-weight;
+  -moz-transition: .2s background-color, color, font-weight;
+}
+
+.row:hover {
+	background-color: #CCCCCC;
+}
+
+.row:hover .cell {
+	font-weight: 700;
+}
+
+.red {
+	color: #CC0000;
+}
+
+.w100 {
+  width:100%;
+}
+.caption {
+  display:table-caption;
+  caption-side:left;
+  vertical-align:middle;
+}
+.tablelayout h3 {
+  text-align:center;
+  border-bottom: 4px solid white;
+  background-color: white;
+  color: #934e00;
+  
+}
+
+.tablelayout p {
+	padding: 5px;
+}
+
+.fundament {
+	font-size: 20px;
+	line-height: 21px;
+}
+
+.borderleft {
+	border-left: 2px solid white;
+}

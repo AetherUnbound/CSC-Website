@@ -1,0 +1,130 @@
+/*-----------------------
+    History Page Table
+-----------------------*/
+.tablelayout {
+  display:table;
+  width:85vh;
+  text-align:center;
+  margin: auto;
+}
+.tablelayout h1.cellnobord {
+	width: 15%;
+	color: #006993;
+	background-color: #CCCCCC;
+    font-size: 40px; 
+	border-bottom: 4px solid white;
+}
+
+
+.cell {
+	display:table-cell;
+	vertical-align:middle;
+	width: 20%;
+	border-bottom: 4px solid white;
+}
+
+.cellnobord {
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+  width: 50%;
+  border-bottom: none;
+  border-right: 2px solid white;
+}
+
+.row .right {
+	text-align: right;
+}
+
+.row .left {
+	text-align: left;
+}
+
+.row .center {
+	text-align: center;
+}
+
+.title .cell {
+	font-weight: 600;
+	background-color: white;	
+}
+
+.row {
+  display:table-row;
+  transition: .2s background-color, color;  
+  -webkit-transition: .2s background-color, color;
+  -moz-transition: .2s background-color, color;
+}
+
+.red {
+	color: #CC0000;
+}
+
+.w100 {
+  width:100%;
+}
+.caption {
+  display:table-caption;
+  caption-side:left;
+  vertical-align:middle;
+}
+.tablelayout h3 {
+  text-align:center;
+  border-bottom: 4px solid white;
+  background-color: white;
+  color: #934e00;
+  line-height: 50px;  
+}
+
+.tablelayout h2 {
+	text-align:center;
+	border-bottom: 4px solid white;
+	background-color: white;
+	color: #934e00;
+	line-height: 50px;
+	width: 20%;
+}
+
+.tablelayout p {
+	padding: 5px;
+}
+
+.fundament {
+	font-size: 20px;
+	line-height: 21px;
+}
+
+.borderleft {
+	border-left: 2px solid white;
+}
+
+.borderright {
+	border-right: 2px solid white;
+}
+
+.tablelayout hr {
+	height: 5px;		
+	background-color: #777777;	
+	border-style: none;
+	width: 100%; 
+	margin: -5px 0px;
+}
+
+.row:hover {
+	background-color: #CCCCCC;
+}
+
+.hist {
+	position: relative;
+	left: 8px;
+}
+
+.tablelayout .hrbot {
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+	width: calc(100% - 1px);
+	width: -webkit-calc(100% - 4px);
+	/*width: -moz-calc(100% - 4px);*/
+	margin-top: 0px;
+}
+

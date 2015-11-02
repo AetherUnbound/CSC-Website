@@ -1,0 +1,113 @@
+/*-----------------------
+ Search Bar Style Sheet
+-----------------------*/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+
+::-webkit-input-placeholder {
+   color: #CCCCCC;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #CCCCCC;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #CCCCCC;  
+}
+
+
+#wrap {
+  margin: 0px 0px;
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  width: 90vh;
+  float: right;
+  padding: 0;
+  position: relative;
+}
+
+div.index {
+	top: 20vh;
+}
+
+div.quote {
+	top: 0px;
+	padding-bottom: 5px;
+}
+
+input[type="text"] {
+  height: 12vh;
+  font-size: 8vh;
+  font-weight: 200;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 300;
+  border: none;
+  outline: none;
+  color: #000000;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  background-color: none;
+  z-index: 3;
+  transition: width .6s cubic-bezier(0.000, 0.795, 0.000, 1.000), background-color .6s ease;
+  -webkit-transition: width .6s cubic-bezier(0.000, 0.795, 0.000, 1.000), background-color .6s ease;
+  -moz-transition: width .6s cubic-bezier(0.000, 0.795, 0.000, 1.000), background-color .6s ease;
+  cursor: pointer;
+}
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #934E00;
+  opacity: 1;
+}
+
+input[type="text"]:hover {
+  border-bottom: 1px solid #934E00;
+  opacity: 1;
+}
+
+
+input[type="text"]:focus {
+  width: 82vh;
+  z-index: 1;
+  border-bottom: 1px solid #934E00;
+  cursor: text;
+  background-color: #009FE0;
+}
+input[type="submit"] {
+  height: 12vh;
+  width: 63px;
+  display: inline-block;
+  color:red;
+  float: right;
+  background: url("\\Logos\\search-icon-md-small.png") center center no-repeat;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+/*
+input[type="submit"]:focus:hover:active {
+	opacity: 0.4;
+}
+/*
+input[type="submit"]:hover {
+  opacity: 0.4;
+}
+
+input[type="submit"]:focus:hover {
+  opacity: 0.8;
+}
+/* I need to get this to go to full opacity */

@@ -1,0 +1,142 @@
+/*-----------------------
+     Find Page Table
+-----------------------*/
+.tablelayout {
+  display:table;
+  width:85vh;
+  text-align:center;
+  margin: auto;
+}
+.tablelayout h1.cellnobord {
+	width: 15%;
+	color: #006993;
+	background-color: #CCCCCC;
+    font-size: 40px; 
+	border-bottom: 4px solid white;
+}
+
+
+.cell {
+	display:table-cell;
+	vertical-align:middle;
+	width: 20%;
+	border-bottom: 4px solid white;
+}
+
+.cellnobord {
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+  width: 50%;
+  border-bottom: none;
+  border-right: 2px solid white;
+}
+
+.row .entry {
+	text-align: right;
+	width: 35%;
+	font-weight: 700;
+}
+
+.row .symbol {
+	text-align: left;
+	width: 20%;
+}
+
+.row .company {
+	text-align: left;
+	width: 45%;
+}
+
+.title .cell {
+	font-weight: 600;
+	background-color: white;	
+}
+
+.row {
+  display:table-row;
+  background-color: #5CC2E8; 
+  transition: .2s background-color, color;  
+  -webkit-transition: .2s background-color, color;
+  -moz-transition: .2s background-color, color;
+}
+
+.red {
+	color: #CC0000;
+}
+
+.w100 {
+  width:100%;
+}
+.caption {
+  display:table-caption;
+  caption-side:left;
+  vertical-align:middle;
+}
+.tablelayout h3 {
+  text-align:center;
+  border-bottom: 4px solid white;
+  background-color: white;
+  color: #934e00;
+  line-height: 50px;  
+}
+
+.tablelayout h2 {
+	text-align:center;
+	border-bottom: 4px solid white;
+	background-color: white;
+	color: #934e00;
+	line-height: 50px;
+	width: 20%;
+}
+
+.tablelayout p {
+	padding: 5px;
+}
+
+
+.borderleft {
+	border-left: 2px solid white;
+}
+
+.borderright {
+	border-right: 2px solid white;
+}
+
+.tablelayout hr {
+	height: 5px;		
+	background-color: #777777;	
+	border-style: none;
+	width: 100%; 
+	margin: -5px 0px;
+}
+
+.row:hover {
+	background-color: #CCCCCC;
+}
+
+.row:hover .cell {
+	font-weight: 600;
+}
+
+.entry a {
+	text-decoration: none;
+	color: #934e00;
+	overflow: hidden;
+	padding: 3px 3px;
+	margin: auto -4px auto -3px;
+	line-height: 100%;
+	transition: .2s color;  
+	-webkit-transition: .2s color;
+	-moz-transition: .2s color;
+/*	transition: .2s background-color, color;  
+	-webkit-transition: .2s background-color, color;
+	-moz-transition: .2s background-color, color;*/
+}
+
+.entry a:hover {
+	color: #006993;
+/*	background-color: #006993;
+	color: #C3C3C3;*/
+}
+

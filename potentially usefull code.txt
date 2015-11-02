@@ -1,0 +1,3 @@
+SELECT * FROM symbols WHERE symSymbol LIKE ("%msf%") OR symName LIKE ("%msf%") ORDER BY symName DESC
+
+<script>document.getElementsByClassName("entry").onmouseover = function(){ this.style.margin-top

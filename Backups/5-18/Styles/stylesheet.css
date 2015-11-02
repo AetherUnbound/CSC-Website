@@ -1,0 +1,235 @@
+/*-----------------------
+	   Style Sheet
+-----------------------*/
+body {
+    background-color: #009FE0;
+	background-image: url("\\Logos\\SchwabLogoBAD.jpg");
+	background-attachment: fixed;
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	/*background-color: #dfdfdf;*/
+	
+}
+
+body.notindex {
+	background-image: url("\\Logos\\SchwabLogoBAD_blank.");
+}
+/* also try 0315C6 for container*/
+
+#containertemp {
+	position: relative;
+	top: 100px;
+	width: 90vh;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
+	font-family: 'Hoefler Text';
+}
+
+#top-menu {
+	height: 100px;
+	position: initial;
+	text-align: center;	
+	width: 100vh;
+	z-index: 999;
+	display: inline-block; /* change to table? see: https://css-tricks.com/centering-in-the-unknown/*/
+}
+
+#top-background {
+	height: 100px;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	z-index: 900;
+	background-color: #CCCCCC;
+	top: 0px;
+	left: 0px;
+}
+
+#top-background-old {
+	background-image: url("Logos\border_pray.png");
+	background-position: left;
+	background-repeat: repeat-x;
+	z-index: 900;
+	height: 150px;
+	/*
+	margin: 0px 0px 0px 0px;
+	border: 0px 0px 0px 0px;
+	*/
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	text-align: center;
+	
+}
+
+/* code for a page change button I won't implement
+#pagepass {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
+	top: -15px;	
+}
+
+#pagepass h1 {
+	font-size: 5vh;
+	background-color: #006993;
+	color: #CCCCCC;
+}
+*/
+
+.button {
+	width: 24.5%;
+	font-family: "Courier New", Courier, monospace;
+	border-width: 0px 2px 0px 2px;
+	border-style: solid;
+	font-size: 4vh;
+	float: left;
+	height: 100%;
+	line-height: 100px;
+	display: block;
+	vertical-align: bottom;
+	text-align: center;
+}
+
+ul.menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 4vh;
+	height: 100%;
+	line-height: 100px;
+}
+
+li.menu {
+	float: left;
+	width: 25vh;
+	border-style: solid;
+	border-width: 0px 2px 0px 2px;
+}
+
+hr.top {
+	height: 5px;
+	/*background-color: #e6e6e6; */
+	border-color: #009FE0; 
+	background-color: #934E00;	
+	border-style: none;
+	position: fixed;
+	top: 87px;
+	left: 0px;
+	width: 100%;
+	border-top-width: 2px;
+	border-bottom-width: 2px; 
+}
+
+/*-----------------------
+	   Font Code
+-----------------------*/
+
+h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 60px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 1000;
+	line-height: 26.3999996185303px;
+	text-align: center;
+}
+h3 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	line-height: 31px;
+}
+p {
+	font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 1em;
+	/*text-align: justify; */
+}
+blockquote {
+	font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 600;
+	line-height: 30px;
+}
+pre {
+	font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714282989502px;
+}
+
+/*-----------------------
+  Possible navbar Code
+-----------------------*/
+.nav {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 4vh;
+	height: 100%;
+	line-height: 100px;
+}
+
+.nav ul {
+	list-style: none;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+.nav li {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.2em;
+	line-height: 100px;
+	height: 100px;  
+	width: 23vh;
+	border-bottom: none;
+	height: 100px;
+	line-height: 100px;
+	font-size: 1.4em;
+	display: inline-block;
+	margin-right: -1.25vh;
+	margin-left: -1.25vh;
+}
+ 
+.nav a {
+  text-decoration: none;
+  color: #000000;
+  display: block;
+  transition: .4s background-color, color;  
+  -webkit-transition: .4s background-color, color;
+  -moz-transition: .4s background-color, color;
+
+}
+ 
+.nav a:hover {
+  background-color: #934E00;
+  /*   background-color: #009FE0; not sure which one is better...*/
+  color: #009FE0; /* previously white */
+}
+ 
+.nav a.active {
+  background-color: #535362;
+  color: #fff;
+  cursor: default;
+}
+
+/*-----------------------
+		Misc.
+-----------------------*/
+.thebottom {
+	height: 20px;
+}
