@@ -68,6 +68,17 @@ body.notindex {
 	
 }
 
+#portnav {
+	
+}
+
+#portoptions {
+	font-size: 4vh;
+	position: absolute;
+	top: 7.5vh;
+	left: 68.5vw;
+}
+
 /* code for a page change button I won't implement
 #pagepass {
 	margin-left: auto;
@@ -181,7 +192,7 @@ pre {
   Possible navbar Code
 -----------------------*/
 .nav {
-	font-family: "Courier New", Courier, monospace;
+	font-family: 'Oswald', sans-serif;
 	font-size: 4vh;
 	height: 100%;
 	line-height: 100px;
@@ -192,6 +203,7 @@ pre {
 	text-align: center;
 	padding: 0;
 	margin: 0;
+	/*overflow: hidden; dunno that this should be here */
 }
 .nav li {
 	font-family: 'Oswald', sans-serif;

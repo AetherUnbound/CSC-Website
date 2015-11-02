@@ -48,13 +48,15 @@ session_start();
 			<li><a href="#" id="quotenav">Quote</a></li>
 			<li><a href="#" id="histnav">History</a></li>
 			<li><a href="#" id="findnav">Find</a></li>
+			<li><a href="#" id="portnav">Portfolio<div id="portoptions">Testing</div></a></li>
+			
 		</ul>
 	</div>
 	<hr class="top">
 </div>
 
 <div id="portdiv">
-
+testing
 </div>
 	
 <div id="containertemp">
