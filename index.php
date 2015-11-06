@@ -44,21 +44,24 @@ session_start();
 <div id="top-background">	
 	<div class="nav" id="navbar">
 		<ul id="navul">
-			<li><a id="homenav" href="#"><img id="homeimg" style="margin-bottom:-30px; vertical-align:top; height: 95px; width: 100px;"></a></li>
-			<li><a href="#" id="quotenav">Quote</a></li>
-			<li><a href="#" id="histnav">History</a></li>
-			<li><a href="#" id="findnav">Find</a></li>
-			<li><a href="#" id="portnav">Portfolio<div id="portoptions">Testing</div></a></li>
-			
+			<li class="navli"><a id="homenav" href="#"><img id="homeimg" style="margin-bottom:-30px; vertical-align:top; height: 95px; width: 100px;"></a></li>
+			<li class="navli"><a href="#" id="quotenav">Quote</a></li>
+			<li class="navli"><a href="#" id="histnav">History</a></li>
+			<li class="navli"><a href="#" id="findnav">Find</a></li>
+			<li class="navli" id ="portil"><a href="#" id="portnav">Portfolio</a>
+				<ul id="portmenu">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Register</a></li>
+				</ul>
+			</li>			
 		</ul>
 	</div>
 	<hr class="top">
 </div>
 
-<div id="portdiv">
-testing
+<div id="loading"><img src="Pics\loading.gif"/>
 </div>
-	
+
 <div id="containertemp">
 		
 	<div class="thebottom"></div>		

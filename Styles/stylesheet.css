@@ -68,22 +68,10 @@ body.notindex {
 	
 }
 
-#portnav {
-	z: 1;
-}
-
-#portoptions {
-	font-size: 4vh;
-	position: absolute;
-	top: 7.5vh;
-	left: 68.5vw;
-	transition: .4s background-color, color;  
-	-webkit-transition: .4s background-color, color;
-	-moz-transition: .4s background-color, color;
-}
-
-#portoptions:hover {
-	background-color: #934E00;
+#loading {	
+	display: none;
+	margin-top: 100px;
+	text-align: center;
 }
 
 
@@ -147,6 +135,7 @@ hr.top {
 	width: 100%;
 	border-top-width: 2px;
 	border-bottom-width: 2px; 
+	z-index: -1;
 }
 
 /*-----------------------
@@ -213,19 +202,18 @@ pre {
 	margin: 0;
 	/*overflow: hidden; dunno that this should be here */
 }
-.nav li {
+.navli {
 	font-family: 'Oswald', sans-serif;
-	font-size: 1.2em;
-	line-height: 100px;
-	height: 100px;  
+	font-size: 1.2em; 
 	width: 23vh;
 	border-bottom: none;
 	height: 100px;
 	line-height: 100px;
 	font-size: 1.4em;
 	display: inline-block;
-	margin-right: -1.25vh;
-	margin-left: -1.25vh;
+	vertical-align: top;
+	margin-right: -0.525vh;
+	margin-left: -0.525vh;
 }
  
 .nav a {
@@ -248,6 +236,35 @@ pre {
   background-color: #535362;
   color: #fff;
   cursor: default;
+}
+
+#portmenu { 
+	display: none;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	font-size: 2vh;
+	border: 2px solid #934E00;	
+}
+
+#portmenu a {
+	font-size: ;
+	height: 100%;
+	line-height: 150%;
+}
+
+#portil:hover ul {
+	display: block;
+}
+
+#portil {
+	z-index: 1;
+	padding-bottom: 5px;
+}
+
+.porthover {
+	background-color: #934E00;
+	color: #009FE0;
 }
 
 /*-----------------------
