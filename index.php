@@ -50,8 +50,8 @@ session_start();
 			<li class="navli"><a href="#" id="findnav">Find</a></li>
 			<li class="navli" id ="portil"><a href="#" id="portnav">Portfolio</a>
 				<ul id="portmenu">
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Register</a></li>
+					<li><a id="login" href="#">Login</a></li>
+					<li><a id="register" href="#">Register</a></li>
 				</ul>
 			</li>			
 		</ul>

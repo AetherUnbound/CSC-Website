@@ -32,12 +32,41 @@ $(document).ready( function() {
 		fillContent();
 	});
 	
+	$("#login").click( function(ev) {
+		ev.preventDefault();
+		resetNav();
+		setPort();
+		$.post("login.php", {page : thisPage}, function(data) {			
+			$("body").addClass("notindex");
+			resetNav();
+			setPage(thisPage);
+			$("#containertemp").html(data); 			
+			submitted = true; 
+			console.log(submitted);
+			$("#containertemp").fadeIn(750);			
+		});
+	});
+	
+	//Makes sure portmenu links have a background color
+	$("#portmenu").find("a").hover( function(ev){
+		$(this).css("background-color", "#934E00");
+	}, function(ev) {
+		$(this).css("background-color", "#009FE0");
+	});
+	
+	//NEED TO REVISIT
 	$("#portmenu").hover( function(ev) {
 		//$("#portnav").trigger(ev.type);
 		$("#portnav").addClass("porthover");		
+		if((search && submitted) || thisPage == "Portfolio") {
+			$("#wrap").hide(); 
+		}
 		console.log("hovering!");
 	}, function(ev) {
 		$("#portnav").removeClass("porthover");
+		if((search && submitted) || thisPage == "Portfolio") {
+			$("#wrap").show();
+		}
 	});	
 	
 	
@@ -67,6 +96,8 @@ function setPage(page) {
 		setHist();
 	else if (page == "Find")
 		setFind();
+	else if (page == "Portfolio")
+		setPort();
 }
 
 function resetNav() {
@@ -135,6 +166,11 @@ function setFind() {
 	$("#findnav").addClass("active");
 }
 	
+function setPort() {
+	thisPage = "Portfolio";
+	$("#portnav").addClass("active");
+}
+
 /*
 function setActive() {
 	hash = location.hash;
