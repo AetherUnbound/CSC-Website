@@ -59,13 +59,13 @@ $(document).ready( function() {
 		//$("#portnav").trigger(ev.type);
 		$("#portnav").addClass("porthover");		
 		if((search && submitted) || thisPage == "Portfolio") {
-			$("#wrap").hide(); 
+			$("#theform").hide(400); 
 		}
 		console.log("hovering!");
 	}, function(ev) {
 		$("#portnav").removeClass("porthover");
 		if((search && submitted) || thisPage == "Portfolio") {
-			$("#wrap").show();
+			$("#theform").show(400);
 		}
 	});	
 	
@@ -167,6 +167,7 @@ function setFind() {
 }
 	
 function setPort() {
+	statement = "What are we seeking ?";
 	thisPage = "Portfolio";
 	$("#portnav").addClass("active");
 }
