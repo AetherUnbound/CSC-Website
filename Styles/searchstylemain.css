@@ -37,7 +37,7 @@ div.quote {
 	padding-bottom: 5px;
 }
 
-input[type="text"] {
+#search {
   height: 12vh;
   font-size: 8vh;
   font-weight: 200;
@@ -66,7 +66,7 @@ input[type="text"] {
 
 
 @-moz-document url-prefix() {
-    input[type="text"] {
+    #search {
         width: 76vh;
     }
 	#search:focus {
@@ -74,7 +74,7 @@ input[type="text"] {
 	}
 }
 
-input[type="submit"] {
+#search_submit {
   height: 12vh;
   width: 63px;
   display: inline-block;
@@ -91,10 +91,6 @@ input[type="submit"] {
   opacity: 1;
   cursor: pointer;
   transition: opacity .4s ease;
-}
-
-input[type="submit"]:hover {
-	background: url("\\Logos\\arrowsmall.png") center center no-repeat;
 }
 
 #search_submit {

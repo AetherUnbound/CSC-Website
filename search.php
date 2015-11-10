@@ -1,7 +1,7 @@
 <link href="Styles\\searchstyle.css" rel="stylesheet" type="text/css">
 <script> 
 	$("#search").attr("placeholder", statement);
-	$("form").submit(function (e) {
+	$("#theform").submit(function (e) {
 			e.preventDefault();
 			submitted = true;
 			console.log("I stopped the form submit");

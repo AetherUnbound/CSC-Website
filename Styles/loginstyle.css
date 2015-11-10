@@ -2,3 +2,55 @@
     Login Page Style
 -----------------------*/
 
+#usernametext::-webkit-input-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+#usernametext::-mox-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+#passwordtext::-webkit-input-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+#passwordtext::-mox-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+
+#logincontainer {
+	position: relative;	
+	top: 15vh;
+	background-color: #CCCCCC;
+	padding: 20px;
+}
+
+#usernametext {
+	width: 150px;
+	position: absolute;
+	left: 100px;
+}
+
+#logincontainer hr {
+	background-color: white;
+	height: 3px;
+	border-style: none;
+	margin-bottom: 20px;
+}
+
+#passwordtext {
+	width: 146px;
+	position: absolute;
+	left: 100px;
+}
+
+#logincontainer h1 {
+	line-height: 0px;
+	margin-bottom: 50px;
+}
+
+#loginbutton {
+	text-align: center;	
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 25px;
+	background-color: #009FE0;
+	height: 25px;
+	width: 75px; 
+	border: 2px solid #934e00;
+}
+
+#loginbutton a {
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+}

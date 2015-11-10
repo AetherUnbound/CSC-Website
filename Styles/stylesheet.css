@@ -138,7 +138,7 @@ h1 {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 1000;
-	line-height: 26.3999996185303px;
+	line-height: 26.3999996185303px; /* this is here for a reason, imported code */
 	text-align: center;
 }
 h3 {

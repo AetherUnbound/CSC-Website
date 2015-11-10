@@ -54,7 +54,7 @@ $(document).ready( function() {
 		$(this).css("background-color", "#009FE0");
 	});
 	
-	//NEED TO REVISIT
+	//Function hides the searchbar when the portfolio menu is being viewed
 	$("#portmenu").hover( function(ev) {
 		//$("#portnav").trigger(ev.type);
 		$("#portnav").addClass("porthover");		
