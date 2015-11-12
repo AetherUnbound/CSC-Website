@@ -47,6 +47,21 @@ $(document).ready( function() {
 		});
 	});
 	
+	$("#register").click( function(ev) {
+		ev.preventDefault();
+		resetNav();
+		setPort();
+		$.post("register.php", {page : thisPage}, function(data) {			
+			$("body").addClass("notindex");
+			resetNav();
+			setPage(thisPage);
+			$("#containertemp").html(data); 			
+			submitted = true; 
+			console.log(submitted);
+			$("#containertemp").fadeIn(750);			
+		});
+	});
+	
 	//Makes sure portmenu links have a background color
 	$("#portmenu").find("a").hover( function(ev){
 		$(this).css("background-color", "#934E00");
@@ -74,13 +89,12 @@ $(document).ready( function() {
 	$.ajaxSetup({
                  beforeSend: function() {
                      $('#loading').show();
-                     $('#containertemp').hide();
+                     $('#containertemp').hide();					 
                  },
                  complete: function(){					 
                      $('#loading').hide();
-                     $('#containertemp').show();
-                 },
-                 success: function() {}
+                     $('#containertemp').fadeIn(500);
+                 }
 	});
 	
 });	
@@ -133,6 +147,7 @@ function fillContent() {
 	else { 
 		$("#containertemp").load("blankform.php");
 		$("#search").val("");
+		$("#search").focus();
 	}
 }
 
@@ -143,7 +158,8 @@ function setHome() {
 	$("#homenav").addClass("active");
 	$("#homeimg").attr("src", "Logos\\SchwabLogoCenterGrey.png");
 	$("#containertemp").load("blankform.php");
-	$("body").removeClass("notindex");	
+	$("body").removeClass("notindex");
+	$("#search").focus();
 	//$("#search").attr("placeholder", statement);
 }
 

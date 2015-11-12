@@ -2,12 +2,12 @@
 require "search.php";
 ?>
 <script>
-	$("#loginform").submit(function (e) {
+	$("#regform").submit(function (e) {
 		e.preventDefault();
 		loginAJAX();
 	});
 	
-	$("#loginbutton").click(function (e) {
+	$("#regbutton").click(function (e) {
 		e.preventDefault();
 		loginAJAX();
 	});
@@ -26,7 +26,7 @@ require "search.php";
 		console.log($("#passwordtext").val());
 			$.ajax({
 				type: "POST",
-				url: "loginrequest.php",
+				url: "registerrequest.php",
 				data: { user : $("#usernametext").val(), pass : $("#passwordtext").val()}, success: function(data) {
 					$("#loginform").hide(400);
 					$("#logintitle").html("Login Success!");					
@@ -44,13 +44,18 @@ require "search.php";
 			});
 	}
 </script>
-<link href="Styles\loginstyle.css" rel="stylesheet" type="text/css">
-<div id="logincontainer">
-<h1 id="logintitle">Login</h1>
+<link href="Styles\registerstyle.css" rel="stylesheet" type="text/css">
+<div id="regcontainer">
+<h1 id="regtitle">Register</h1>
 <hr/>
-<form id="loginform">
+<form id="regform">
 	Username: <input id="usernametext" name="usernametext" type="search" placeholder="Username"/> <br/> <br/>
 	Password: <input id="passwordtext" name="passwordtext" type="password" placeholder="Password"> <br/> <br/>
-	<div id="loginbutton"><a href="#">Login</a></div>
+	<input id="verifypasstext" name="verifypasstext" type="password" placeholder="Verify Password"> <br/> <br/>
+	Email: <input id="emailtext" name="emailtext" type="search" placeholder="email@domain.com"> <br/> <br/>
+	Security Question: <input id="questiontext" name="questiontext" type="text" placeholder="What is the name of the elementary school you attended?"> <br/> <br/>
+	Security Answer: <input id="answertext" name="answertext" type="text" placeholder="MHT Quote Elementary School"> <br/> <br/>
+	Password Hint: <input id="hinttext" name="hinttext" type="text" placeholder="I use the same password for everything"> <br/> <br/>
+	<div id="regbutton"><a href="#">Register</a></div>
 </form>
 </div>

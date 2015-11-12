@@ -1,4 +1,4 @@
-<link href="Styles\\searchstyle.css" rel="stylesheet" type="text/css">
+<link href="Styles\searchstyle.css" rel="stylesheet" type="text/css">
 <script> 
 	$("#search").attr("placeholder", statement);
 	$("#theform").submit(function (e) {
