@@ -12,7 +12,7 @@
 	padding: 20px;
 }
 
-#regform input {
+#loginform input {
 	width: 150px;
 	position: absolute;
 	left: 100px;
@@ -26,7 +26,7 @@
 }
 
 #passwordtext {
-	width: 146px;
+	width: 146px !important;
 }
 
 #logincontainer h1 {

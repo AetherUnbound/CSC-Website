@@ -25,18 +25,24 @@ $query = "SELECT users.*
 		if(isset($data)) {
 			$querySuccess = true;
 			extract($data);
-			echo "<script>console.log('userDB success');</script>";			
+			echo "<script>console.log('userDB verification success');</script>";			
 		}
 		else {
 			//error catch
-			header('HTTP/1.0 420 Method Failure');			
+			header('HTTP/1.0 420 Method Failure');	
+			@$result->free();
+			$objDBUtil->Close();			
 			exit;
 		}
 	}
 	else {
-		header('HTTP/1.0 420 Method Failure');				
+		header('HTTP/1.0 420 Method Failure');		
+		@$result->free();
+		$objDBUtil->Close();				
 		exit;
-	}
+	}	
+@$result->free();
+$objDBUtil->Close();	
 
 //$stock = $objDBUtil->DBQuotes($search);
 //query, DBQuotes adds slashes to prevent SQL injection

@@ -12,6 +12,17 @@
 	padding: 20px;
 }
 
+.notext {
+	border: 1px solid red;
+}
+
+#errordiv {
+	text-align: center;
+	color: red;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
 #regform input {
 	width: 150px;
 	position: absolute;

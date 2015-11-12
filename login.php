@@ -44,7 +44,7 @@ require "search.php";
 			});
 	}
 </script>
-<link href="Styles\loginstyle.css" rel="stylesheet" type="text/css">
+<link href="Styles\\loginstyle.css" rel="stylesheet" type="text/css">
 <div id="logincontainer">
 <h1 id="logintitle">Login</h1>
 <hr/>

@@ -2,46 +2,85 @@
 require "search.php";
 ?>
 <script>
-	$("#regform").submit(function (e) {
-		e.preventDefault();
-		loginAJAX();
-	});
 	
 	$("#regbutton").click(function (e) {
 		e.preventDefault();
-		loginAJAX();
+		checkInputs();
+		registerAJAX();
 	});
-	
+		
 	$(document).keypress(function(e) {
 		//if fields have values and the enter key is pressed
 		if(e.which == 13 && $("#usernametext").val() && $("#passwordtext").val()) { 
 			console.log('You pressed enter!');
-			loginAJAX();
+			checkInputs();
+			registerAJAX();
 		}
     });	
 	
-	function loginAJAX () {
+	function checkInputs() {
+		var isFilled = true;		
+		$("#regform").find(":input").each( function (index, value) {				
+			$(this).removeClass("notext"); //reset after each cycle			
+			if($(this).val() == "") {
+				isFilled = false;
+				$(this).addClass("notext");
+				console.log(this.id + " (" + index  + ") is empty!"); 
+			}
+		});
+		$("#errordiv").html(""); //reset 
+		if(!isFilled) {
+			$("#errordiv").html("Some of the fields were not filled");
+		}
+	}
+	
+	function registerAJAX () {
 		//function to call loginrequest form 
-		console.log($("#usernametext").val());
-		console.log($("#passwordtext").val());
-			$.ajax({
-				type: "POST",
-				url: "registerrequest.php",
-				data: { user : $("#usernametext").val(), pass : $("#passwordtext").val()}, success: function(data) {
-					$("#loginform").hide(400);
-					$("#logintitle").html("Login Success!");					
-				},
-				error: function(data) {
-					console.log("ERROR");
-					$("#logintitle").fadeIn(600).html("Login Error").css("color", "red");
-					console.log("Title changed");					
-					$("#logintitle").delay(2000).fadeOut(600).queue(function(n) { 
-						$(this).html("Login"); 
-						$(this).css("color", "black");
-						n();
-					}).fadeIn(600);
-				}
-			});
+		$("#regform").find(":input").each( function (index, value) {				
+			console.log(this.id + " = " + $(this).val());
+		});
+		$.ajax({
+			type: "POST",
+			url: "registerrequest.php",
+			data: { 
+				user : $("#usernametext").val(), 
+				pass : $("#passwordtext").val(), 
+				email : $("#emailtext").val(),
+				quest : $("#questiontext").val(),
+				answ : $("#answertext").val(),
+				hint : $("#hinttext").val()
+			},
+			success: function(data) {
+				
+				$("#regform").hide();
+				console.log("This is the data: " + data);	
+				$("#regtitle").html("Registration Success!").css({
+					"line-height" : "70px"
+				});	
+			},
+			error: function(data) {
+				console.log("ERROR");
+				$("#regform").hide();
+				$("#regtitle").html("Registration Error").css({
+					"color" : "red",
+					"line-height" : "70px"
+				});
+				console.log("Title changed");					
+				$("#regtitle").delay(2000).fadeOut(600).queue(function(n) { 
+					//clear the form
+					$("#regform").find(":input").each( function (index, value) {
+						$(this).val("");
+					});
+					$(this).html("Register"); 
+					$(this).css({
+						"color" : "black",
+						"line-height" : "0px"
+					});
+					$("#regform").fadeIn(600);
+					n();
+				}).fadeIn(600);
+			}
+		});
 	}
 </script>
 <link href="Styles\registerstyle.css" rel="stylesheet" type="text/css">
@@ -49,6 +88,7 @@ require "search.php";
 <h1 id="regtitle">Register</h1>
 <hr/>
 <form id="regform">
+	<div id="errordiv"></div>
 	Username: <input id="usernametext" name="usernametext" type="search" placeholder="Username"/> <br/> <br/>
 	Password: <input id="passwordtext" name="passwordtext" type="password" placeholder="Password"> <br/> <br/>
 	<input id="verifypasstext" name="verifypasstext" type="password" placeholder="Verify Password"> <br/> <br/>
