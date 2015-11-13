@@ -2,11 +2,14 @@
 require "search.php";
 ?>
 <script>
+	var isFilled = true;
 	
 	$("#regbutton").click(function (e) {
 		e.preventDefault();
 		checkInputs();
-		registerAJAX();
+		if(isFilled) {
+			registerAJAX();
+		}
 	});
 		
 	$(document).keypress(function(e) {
@@ -14,18 +17,23 @@ require "search.php";
 		if(e.which == 13 && $("#usernametext").val() && $("#passwordtext").val()) { 
 			console.log('You pressed enter!');
 			checkInputs();
-			registerAJAX();
+			if(isFilled) {
+				registerAJAX();
+			}
 		}
     });	
 	
-	function checkInputs() {
-		var isFilled = true;		
+	//Perhaps add another function that performs a pre-query of the DB to ensure
+	//there isn't already an entry with that username?
+	
+	function checkInputs() {				
+		isFilled = true;
 		$("#regform").find(":input").each( function (index, value) {				
 			$(this).removeClass("notext"); //reset after each cycle			
-			if($(this).val() == "") {
+			if($(this).val() == "" || $(this).val() == " ") {
 				isFilled = false;
 				$(this).addClass("notext");
-				console.log(this.id + " (" + index  + ") is empty!"); 
+				console.log(this.id + " (" + index  + ") is empty!");
 			}
 		});
 		$("#errordiv").html(""); //reset 

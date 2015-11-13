@@ -5,7 +5,7 @@ require "Scripts\DbUtil.php"; $objDBUtil = new DbUtil;
 //have to set right parameters
 $objDBUtil->host = "cs.spu.edu";
 $objDBUtil->user = "bowdenm";
-$objDBUtil->pwd = "du8rejuN";
+$objDBUtil->pwd = "dinglebrumbus";
 $objDBUtil->defaultDB = "bowdenm_portfolio";
 $db = $objDBUtil->Open();	
 $query = "INSERT INTO users 
@@ -18,10 +18,11 @@ $query = "INSERT INTO users
 	
 	$result = @$db->query($query);
 	if($result) {						
-		echo "<script>console.log('userDB insert success');console.log('{$result}');</script>";
+		echo "Insert complete with result: {$result}";
+		exit;
 	}
 	else {
-		header('HTTP/1.0 420 Blaze it');						
+		header('HTTP/1.0 420 Blaze it');		
 		@$result->free();
 		$objDBUtil->Close();
 		exit;

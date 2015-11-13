@@ -10,7 +10,7 @@ $querySuccess = false;
 //have to set right parameters
 $objDBUtil->host = "cs.spu.edu";
 $objDBUtil->user = "bowdenm";
-$objDBUtil->pwd = "du8rejuN";
+$objDBUtil->pwd = "dinglebrumbus";
 $objDBUtil->defaultDB = "bowdenm_portfolio";
 $db = $objDBUtil->Open();	
 $query = "SELECT users.* 
