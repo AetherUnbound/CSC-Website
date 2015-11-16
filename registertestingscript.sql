@@ -5,3 +5,4 @@ select users.* FROM users;
 insert into users values("dumb", "realdumb", "email@dumb.com", "this is a question", "this is an answer", "im dumb", 'blah');
 DELETE from users where username = "swains";
 set password = password('dinglebrumbus');
+SELECT username FROM users WHERE username = 'fuckoff' LIMIT 1;

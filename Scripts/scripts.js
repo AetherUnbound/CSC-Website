@@ -31,20 +31,19 @@ $(document).ready( function() {
 		setFind();
 		fillContent();
 	});
-	
+	$("#portnav").click( function(ev) {
+		ev.preventDefault();
+		resetNav();
+		setPort();
+		//currently set to redirect to login page
+		//will eventually load portfolio once logged in
+		loginPage();
+	});		
 	$("#login").click( function(ev) {
 		ev.preventDefault();
 		resetNav();
 		setPort();
-		$.post("login.php", {page : thisPage}, function(data) {			
-			$("body").addClass("notindex");
-			resetNav();
-			setPage(thisPage);
-			$("#containertemp").html(data); 			
-			submitted = true; 
-			console.log(submitted);
-			$("#containertemp").fadeIn(750);			
-		});
+		loginPage();
 	});
 	
 	$("#register").click( function(ev) {
@@ -149,6 +148,18 @@ function fillContent() {
 		$("#search").val("");
 		$("#search").focus();
 	}
+}
+
+function loginPage() {
+	$.post("login.php", {page : thisPage}, function(data) {			
+		$("body").addClass("notindex");
+		resetNav();
+		setPage(thisPage);
+		$("#containertemp").html(data); 			
+		submitted = true; 
+		console.log(submitted);
+		$("#containertemp").fadeIn(750);			
+	});
 }
 
 function setHome() {

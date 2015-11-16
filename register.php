@@ -2,12 +2,17 @@
 require "search.php";
 ?>
 <script>
-	var isFilled = true;
+	//validator struct
+	var validator = { 
+		valid : true,
+		errorString : ""
+	};
 	
 	$("#regbutton").click(function (e) {
 		e.preventDefault();
 		checkInputs();
-		if(isFilled) {
+		console.log("Pre-register validity status: " + validator.valid);
+		if(validator.valid) {
 			registerAJAX();
 		}
 	});
@@ -17,7 +22,7 @@ require "search.php";
 		if(e.which == 13 && $("#usernametext").val() && $("#passwordtext").val()) { 
 			console.log('You pressed enter!');
 			checkInputs();
-			if(isFilled) {
+			if(validator.valid) {
 				registerAJAX();
 			}
 		}
@@ -26,19 +31,70 @@ require "search.php";
 	//Perhaps add another function that performs a pre-query of the DB to ensure
 	//there isn't already an entry with that username?
 	
-	function checkInputs() {				
-		isFilled = true;
+	//Function to check that register page has valid inputs
+	function checkInputs() {
+		//reset validator
+		validator.valid = true;
+		validator.errorString = "";
+		//set RegEx for email test
+		var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+		//Checks each input for empty values		
 		$("#regform").find(":input").each( function (index, value) {				
 			$(this).removeClass("notext"); //reset after each cycle			
 			if($(this).val() == "" || $(this).val() == " ") {
-				isFilled = false;
+				validator.valid = false;
+				validator.errorString = "Some of the fields were not filled";
 				$(this).addClass("notext");
 				console.log(this.id + " (" + index  + ") is empty!");
 			}
 		});
+		//if valid flag is still true
+		if (validator.valid) {
+			//checks to make sure passwords are equal
+			if($("#passwordtext").val() != $("#verifypasstext").val()) {
+				console.log($("#passwordtext").val() + " vs. " + $("#verifypasstext").val());
+				$("#passwordtext").addClass("notext");
+				$("#verifypasstext").addClass("notext");
+				validator.valid = false;
+				validator.errorString = "Passwords do not match";
+			}
+			//checks if email is valid
+			else if(!testEmail.test($("#emailtext").val())) {
+				$("#emailtext").addClass("notext");
+				validator.valid = false;
+				validator.errorString = "Email entered is not valid";
+			}
+			
+			//check is username is already registered
+			else {
+				console.log("Running user AJAX");
+				validator.valid = false;
+				$.ajax({
+					type: "POST",
+					async: false,
+					url: "AJAX\\registertest.php",
+					data: { user : $("#usernametext").val()},
+					success: function(data) {
+						validator.valid = true;
+						console.log(data);
+						console.log("Apparent user test success");
+					},
+					error: function(data) {
+						console.log("USERNAME ERROR");
+						validator.valid = false;
+						console.log(validator.valid);
+						validator.errorString = "This username is already registered";
+						//$("#errordiv").html(validator.errorString);
+					}
+				});
+				console.log("AJAX post-request message");
+			}	
+		}
+		//Output any errors
 		$("#errordiv").html(""); //reset 
-		if(!isFilled) {
-			$("#errordiv").html("Some of the fields were not filled");
+		if(!validator.valid) {
+			console.log("Preparing error message");
+			$("#errordiv").html(validator.errorString);
 		}
 	}
 	
@@ -49,7 +105,7 @@ require "search.php";
 		});
 		$.ajax({
 			type: "POST",
-			url: "registerrequest.php",
+			url: "AJAX\\registerrequest.php",
 			data: { 
 				user : $("#usernametext").val(), 
 				pass : $("#passwordtext").val(), 

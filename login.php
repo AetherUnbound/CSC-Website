@@ -26,7 +26,7 @@ require "search.php";
 		console.log($("#passwordtext").val());
 			$.ajax({
 				type: "POST",
-				url: "loginrequest.php",
+				url: "AJAX\\loginrequest.php",
 				data: { user : $("#usernametext").val(), pass : $("#passwordtext").val()}, success: function(data) {
 					$("#loginform").hide(400);
 					$("#logintitle").html("Login Success!");					
