@@ -1,18 +1,14 @@
 <?php 
-require "DbUtil.php"; $objDBUtil = new DbUtil;
-
+require "UserUtil.php"; $objUserUtil = new UserUtil;
+//just in case
+session_start();
 //Set up query variables
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $querySuccess = false;
 
 //establish db connection 
-//have to set right parameters
-$objDBUtil->host = "cs.spu.edu";
-$objDBUtil->user = "bowdenm";
-$objDBUtil->pwd = "dinglebrumbus";
-$objDBUtil->defaultDB = "bowdenm_portfolio";
-$db = $objDBUtil->Open();	
+$db = $objUserUtil->Open();	
 $query = "SELECT users.* 
 	FROM users 
 	WHERE username = '" . $user . "'
@@ -25,26 +21,29 @@ $query = "SELECT users.*
 		if(isset($data)) {
 			$querySuccess = true;
 			extract($data);
-			echo "<script>console.log('userDB verification success');</script>";			
+			//extract valid username to pass into javascript
+			echo $user;		
+			//Add a session variable upon successful login
+			$_SESSION['username'] = $user;
 		}
 		else {
 			//error catch
 			header('HTTP/1.0 420 Method Failure');	
 			@$result->free();
-			$objDBUtil->Close();			
+			$objUserUtil->Close();			
 			exit;
 		}
 	}
 	else {
 		header('HTTP/1.0 420 Method Failure');		
 		@$result->free();
-		$objDBUtil->Close();				
+		$objUserUtil->Close();				
 		exit;
 	}	
 @$result->free();
-$objDBUtil->Close();	
+$objUserUtil->Close();	
 
-//$stock = $objDBUtil->DBQuotes($search);
+//$stock = $objUserUtil->DBQuotes($search);
 //query, DBQuotes adds slashes to prevent SQL injection
 //not gonna worry about SQL injection right now
 

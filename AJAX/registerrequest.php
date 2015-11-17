@@ -1,13 +1,9 @@
 <?php 
-require "DbUtil.php"; $objDBUtil = new DbUtil;
+require "UserUtil.php"; $objUserUtil = new UserUtil;
 
 //establish db connection 
 //have to set right parameters
-$objDBUtil->host = "cs.spu.edu";
-$objDBUtil->user = "bowdenm";
-$objDBUtil->pwd = "dinglebrumbus";
-$objDBUtil->defaultDB = "bowdenm_portfolio";
-$db = $objDBUtil->Open();	
+$db = $objUserUtil->Open();	
 $query = "INSERT INTO users 
 	VALUES ('" . $_POST['user'] . "', '" .
 	$_POST['pass'] . "', '" .
@@ -25,13 +21,16 @@ $query = "INSERT INTO users
 		header('HTTP/1.0 420 Blaze it');		
 		//echo "Error with result: " . $result;
 		@$result->free();
-		$objDBUtil->Close();
+		$objUserUtil->Close();
 		exit;
 	}	
 @$result->free();
-$objDBUtil->Close();	
+$objUserUtil->Close();	
 
-//$stock = $objDBUtil->DBQuotes($search);
+//$stock = $objUserUtil->DBQuotes($search);
 //query, DBQuotes adds slashes to prevent SQL injection
 //not gonna worry about SQL injection right now
+
+//See this for password hashing: https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
+
 ?>

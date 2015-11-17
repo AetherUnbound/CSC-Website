@@ -22,17 +22,23 @@ require "search.php";
 	
 	function loginAJAX () {
 		//function to call loginrequest form 
-		console.log($("#usernametext").val());
-		console.log($("#passwordtext").val());
+		username = $("#usernametext").val();
+		console.log("usernametext value: " + username);
+		console.log("passwordtext value: " + $("#passwordtext").val());
 			$.ajax({
 				type: "POST",
 				url: "AJAX\\loginrequest.php",
-				data: { user : $("#usernametext").val(), pass : $("#passwordtext").val()}, success: function(data) {
+				data: { user : username, pass : $("#passwordtext").val()}, 
+				success: function(data) {
+					console.log(data);
 					$("#loginform").hide(400);
-					$("#logintitle").html("Login Success!");					
+					$("#logintitle").html("Login Success!");
+					var currentUser = username;
+					console.log("Current User now set to: " + currentUser);
 				},
 				error: function(data) {
 					console.log("ERROR");
+					username = "";
 					$("#logintitle").fadeIn(600).html("Login Error").css("color", "red");
 					console.log("Title changed");					
 					$("#logintitle").delay(2000).fadeOut(600).queue(function(n) { 

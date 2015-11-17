@@ -1,0 +1,60 @@
+/*-----------------------
+  Portfolio Page Style
+-----------------------*/
+
+#portcontainer {
+	position: relative;	
+	top: 15vh;
+	background-color: #CCCCCC;
+	padding: 20px;
+}
+
+#portinfo {
+	position: relative;
+	left: -5px;
+	z-index: 0;
+	top: 25px;
+	margin-bottom: 15px;
+}
+
+#portadd {
+	/*margin-top: -10px;*/
+	display: none;	
+	position: relative;
+	left: -5px;
+	z-index: 0;
+	top: 25px;
+	margin-bottom: 15px;
+}
+
+#porttabs {
+	
+}
+
+#portcontainer h2 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	position: relative;
+	text-align: center;
+	line-height: auto;
+	margin-bottom: 25px;
+	top: -30px;	
+}
+
+.portactive {
+	border-bottom: 3px solid #934e00;
+	color: #009FE0;
+}
+
+.portheader {
+	float: left;
+	width: 50%;
+	position: relative;
+	top: -30px;
+	height: 1px;
+}
+
+#portcontainer a {
+	text-decoration: none;
+	color: black;	
+	z-index: 2 !important; 
+}

@@ -1,6 +1,7 @@
 //scripts 
 var submitted = false;
 var searchVal;
+
 $(document).ready( function() {
 		
 	setPage(thisPage);
@@ -37,7 +38,8 @@ $(document).ready( function() {
 		setPort();
 		//currently set to redirect to login page
 		//will eventually load portfolio once logged in
-		loginPage();
+		//loginPage();
+		portfolioPage();
 	});		
 	$("#login").click( function(ev) {
 		ev.preventDefault();
@@ -148,6 +150,48 @@ function fillContent() {
 		$("#search").val("");
 		$("#search").focus();
 	}
+}
+
+function portfolioPage() {
+	if(username != "") {
+		//if there is a username, load portfolio page
+		$.post("portfolio.php", {user : username}, function(portData) {			
+				$("body").addClass("notindex");
+				resetNav();
+				setPage(thisPage);
+				$("#containertemp").html(portData); 			
+				submitted = true; 
+				console.log(submitted);
+				$("#containertemp").fadeIn(750);			
+		});
+	}
+	else { //if there is no user set currently
+		loginPage();
+	}
+	/*
+	$.ajax({
+		type: "POST",
+		url: "AJAX\\portfoliotest.php",
+		data: {page : thisPage},
+		//if successful, load user's portfolio page
+		success: function(data) {
+			console.log("User Found: " + data);	
+			//perform post call for portfolio page 
+			$.post("portfolio.php", {user : data}, function(portData) {			
+				$("body").addClass("notindex");
+				resetNav();
+				setPage(thisPage);
+				$("#containertemp").html(portData); 			
+				submitted = true; 
+				console.log(submitted);
+				$("#containertemp").fadeIn(750);			
+			});
+		},
+		//if failed, load login page
+		error: function(data) {
+			loginPage();
+		}
+	}); */
 }
 
 function loginPage() {

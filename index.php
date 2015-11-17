@@ -35,7 +35,7 @@ session_start();
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <!--<script src="scripts.js"></script>-->
 	<script src="Scripts\scripts.js"></script>
-	<script> var thisPage = "<?php echo $thisPage?>"; var search = "<?php echo @$search?>"; var statement = "<?php echo @$statement?>";</script>
+	<script> var thisPage = "<?php echo $thisPage?>"; var search = "<?php echo @$search?>"; var statement = "<?php echo @$statement?>"; var username = "<?php echo @$_SESSION['username']; ?>"; console.log("On Page Load Username: " + username);</script>
 
 </head>
 
