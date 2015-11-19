@@ -51,6 +51,7 @@ session_start();
 			<li class="navli" id ="portil"><a href="#" id="portnav">Portfolio</a>
 				<ul id="portmenu">
 					<li><a id="login" href="#">Login</a></li>
+					<li><a id="logout" href="#">Log Out</a><li>
 					<li><a id="register" href="#">Register</a></li>
 				</ul>
 			</li>			

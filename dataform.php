@@ -102,9 +102,9 @@ if($thisPage == "Quote") {
 			
 			/* next is the HEREDOC. While it's convenient for me to use this format for printing lots of HTML, it becomes very difficult to perform PHP within the HEREDOC; you have to end up setting functions as variables and 'printing' those. I don't want to call it dumb because I understand the reasons behind it (sort of), but it made working through it a lot harder to say the least. */
 			print <<<EODQuote
-			<link href="Styles\quotetablestyle.css" rel="stylesheet" type="text/css">
-			<div class="quoteDiv" style=""></div>
-			<div class="tablelayout forMozil">
+			<link href="Styles\\quotetablestyle.css" rel="stylesheet" type="text/css">
+			<div style="padding-bottom: 80px;"></div>
+			<div class="tablelayout ">
 			  <h1 class="cellnobord">{$forNull(@$symSymbol, true, true)}</h1>
 			  <div class="cellnobord">
 			  
@@ -158,7 +158,7 @@ if($thisPage == "Quote") {
 				</div>
 			  </div>
 			</div>
-			<div class="tablelayout">
+			<div class="tablelayout ">
 			 <div class="cellnobord">
 				<h3 class="tablelayout w100 fundament">Fundamentals</h3>
 				<div class="tablelayout w100">
@@ -231,18 +231,19 @@ if(!empty($search))
 			$printTable = true; //will still print the table if a symbol without data
 		print <<<EODHist1
 			<link href="Styles\\histtablestyle.css" rel="stylesheet" type="text/css">
+			<div style="padding-bottom: 80px;"></div>
 			<div class="largescreentop"></div>
-			<div class="tablelayout forMozil">
+			<div class="tablelayout ">
 		  <h1 class="cellnobord">{$forNull(@$symSymbol, true, true)}</h1>
 		  <div class="cellnobord">
 		  
 		   <h3 class="tablelayout w100">{$forNull(@$symName, true)}</h3>		
 		  </div>	  
 		</div>
-		<div class="tablelayout">
+		<div class="tablelayout ">
 			<hr>
 		</div>
-		<div class="tablelayout">
+		<div class="tablelayout ">
 			<div class="row title">
 				<p class="cell center borderleft">Date</p>
 				<p class="cell right">Last</p>
@@ -251,16 +252,16 @@ if(!empty($search))
 				<p class="cell right">Volume</p>
 			</div>
 		</div>
-		<div class="tablelayout">
+		<div class="tablelayout ">
 			<hr>
 		</div>
-		<div style="height: 60vh; overflow: auto;">
+		<div class="" style="height: 60vh; overflow: auto;">
 EODHist1;
 		//checks if the table has data (and how much) to see if a scrollbar and the bottom bar are necessary
 		if (@$printTable and ($numRows > 10))
-			print "<div class=\"tablelayout hist\">";
+			print "<div class=\"tablelayout hist \">";
 		else
-			print "<div class=\"tablelayout\">";
+			print "<div class=\"tablelayout \">";
 		do { //do-while here because we've already extracted once
 			
 			echo "
@@ -277,7 +278,7 @@ EODHist1;
 			print <<<EODHist2
 					</div>
 				</div>
-				<div class="tablelayout">
+				<div class="tablelayout ">
 					<hr class="hrbot">
 				</div>
 				<div class="thebottom"></div>	

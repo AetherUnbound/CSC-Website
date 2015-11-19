@@ -47,6 +47,11 @@ $(document).ready( function() {
 		setPort();
 		loginPage();
 	});
+	$("#logout").click( function(ev) {
+		ev.preventDefault();
+		logOut();
+	});
+	$("#logout").hide();
 	
 	$("#register").click( function(ev) {
 		ev.preventDefault();
@@ -126,7 +131,7 @@ function fillContent() {
 		search = $("#search").val();	
 	if(search && submitted)	{
 		console.log("submitted and posting");
-		if(thisPage == "Home")
+		if(thisPage == "Home" || thisPage == "Portfolio")
 			thisPage = "Quote";
 		/* $.post("dataform.php", {page : thisPage, search : $("#search").val() }, function(data) {
 			console.log("This Page: " + thisPage);
@@ -164,34 +169,16 @@ function portfolioPage() {
 				console.log(submitted);
 				$("#containertemp").fadeIn(750);			
 		});
+		//Also change login menu option to logout
+		$("#login").hide();
+		$("#logout").show();
 	}
 	else { //if there is no user set currently
 		loginPage();
+		//make sure the right option is open
+		$("#login").show();
+		$("#logout").hide();
 	}
-	/*
-	$.ajax({
-		type: "POST",
-		url: "AJAX\\portfoliotest.php",
-		data: {page : thisPage},
-		//if successful, load user's portfolio page
-		success: function(data) {
-			console.log("User Found: " + data);	
-			//perform post call for portfolio page 
-			$.post("portfolio.php", {user : data}, function(portData) {			
-				$("body").addClass("notindex");
-				resetNav();
-				setPage(thisPage);
-				$("#containertemp").html(portData); 			
-				submitted = true; 
-				console.log(submitted);
-				$("#containertemp").fadeIn(750);			
-			});
-		},
-		//if failed, load login page
-		error: function(data) {
-			loginPage();
-		}
-	}); */
 }
 
 function loginPage() {
@@ -204,6 +191,16 @@ function loginPage() {
 		console.log(submitted);
 		$("#containertemp").fadeIn(750);			
 	});
+}
+
+function logOut() {
+	//function to remove session variable and javascript variable for user
+	username = "";
+	//reset menu options
+	$("#login").show();
+	$("#logout").hide();
+	resetNav();
+	setHome();
 }
 
 function setHome() {

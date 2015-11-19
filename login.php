@@ -32,9 +32,11 @@ require "search.php";
 				success: function(data) {
 					console.log(data);
 					$("#loginform").hide(400);
-					$("#logintitle").html("Login Success!");
+					$("#logintitle").html("Login Success!").fadeIn(600);
 					var currentUser = username;
 					console.log("Current User now set to: " + currentUser);
+					//Calls user page after 2 seconds when login successful
+					setTimeout(portfolioPage, 2000); 
 				},
 				error: function(data) {
 					console.log("ERROR");
