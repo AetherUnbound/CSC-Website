@@ -2,6 +2,9 @@
   Portfolio Page Style
 -----------------------*/
 
+#addform input::-webkit-input-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+#addform input::-mox-placeholder { font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif; }
+
 #portcontainer {
 	position: relative;	
 	top: 15vh;
@@ -57,4 +60,167 @@
 	text-decoration: none;
 	color: black;	
 	z-index: 2 !important; 
+}
+
+#addform input {
+	width: 150px;
+	position: absolute;
+	left: 150px;
+}	
+
+#addform input[type="text"] {
+	width: 150px !important;
+}
+
+#addform {
+	margin-left: 50px;
+}
+
+#addbutton {
+	text-align: center;	
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 25px;
+	background-color: #009FE0;
+	height: 25px;
+	width: 75px; 
+	border: 2px solid #934e00;
+}
+
+#addbutton a {
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/*-----------------------
+    Port Table Style
+-----------------------*/
+.tablelayout {
+  display:table;
+  width:85vh;
+  text-align:center;
+  margin: auto;
+}
+.tablelayout h1.cellnobord {
+	width: 15%;
+	height: 100%;
+	color: #006993;
+	background-color: #CCCCCC;
+    font-size: 40px; 	
+}
+
+
+.cell {
+	display:table-cell;
+	vertical-align:middle;
+	width: 20%;
+	border-bottom: 4px solid white;
+}
+
+.cellnobord {
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+  width: 50%;
+  border-bottom: none;
+  border-right: 2px solid white;
+}
+
+.row .right {
+	text-align: right;
+}
+
+.row .left {
+	text-align: left;
+}
+
+.row .center {
+	text-align: center;
+}
+
+.title .cell {
+	font-weight: 600;
+	background-color: white;	
+}
+
+.row {
+  display:table-row;
+  background-color: #5CC2E8; 
+  transition: .2s background-color, color;  
+  -webkit-transition: .2s background-color, color;
+  -moz-transition: .2s background-color, color;
+}
+
+.red {
+	color: #CC0000;
+}
+
+.w100 {
+  width:100%;
+}
+.caption {
+  display:table-caption;
+  caption-side:left;
+  vertical-align:middle;
+}
+.tablelayout h3 {
+  text-align:center;
+  border-bottom: 4px solid white;
+  background-color: white;
+  color: #934e00;
+  line-height: 50px;  
+}
+
+.tablelayout h2 {
+	text-align:center;
+	border-bottom: 4px solid white;
+	background-color: white;
+	color: #934e00;
+	line-height: 50px;
+	width: 20%;
+}
+
+.tablelayout p {
+	padding: 5px;
+}
+
+.fundament {
+	font-size: 20px;
+	line-height: 21px;
+}
+
+.borderleft {
+	border-left: 2px solid white;
+}
+
+.borderright {
+	border-right: 2px solid white;
+}
+
+.row:hover {
+	background-color: #CCCCCC;
+}
+
+.hist {
+	position: relative;
+	left: 8px;
+}
+
+.tablelayout hr {
+	height: 5px;		
+	background-color: #777777;	
+	border-style: none;
+	width: 100%; 
+	margin: -5px 0px;
+}
+
+.tablelayout .hrbot {
+
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+	width: calc(100% -2px);
+	width: -webkit-calc(100% - 4px);
+	/*width: -moz-calc(100% - 4px);*/
+	margin-top: 0px;
 }

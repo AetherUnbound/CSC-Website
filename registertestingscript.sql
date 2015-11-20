@@ -6,3 +6,5 @@ insert into users values("dumb", "realdumb", "email@dumb.com", "this is a questi
 DELETE from users where username = "swains";
 set password = password('dinglebrumbus');
 SELECT username FROM users WHERE username = 'fuckoff' LIMIT 1;
+select * FROM portdb;
+insert into portdb values("test", now(), "GOOG", "2", "140", "500", "360", "40", "+360");
