@@ -4,6 +4,9 @@
 //True will open the regular portfolio page
 //		and set the Login option to Logout
 //False will open the login page
+//===NOTE===
+//The above might be unneeded 
+session_start();
 
 //If a user is logged in 
 if(@$_SESSION['username']) {

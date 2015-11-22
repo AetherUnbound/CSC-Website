@@ -24,7 +24,7 @@ $query = "SELECT users.*
 			//extract valid username to pass into javascript
 			echo $user;		
 			//Add a session variable upon successful login
-			//$_SESSION['username'] = $user;
+			$_SESSION['username'] = $user;
 		}
 		else {
 			//error catch

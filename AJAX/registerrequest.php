@@ -11,25 +11,16 @@ $query = "INSERT INTO users
 	$_POST['quest'] . "', '" . 
 	$_POST['answ'] . "', '" . 
 	$_POST['hint'] . "');";
-	
-	$result = @$db->query($query);
-	if($result) {						
-		echo "Insert complete with result: {$result}";
-		exit;
-	}
-	else {
-		header('HTTP/1.0 420 Blaze it');		
-		//echo "Error with result: " . $result;
-		@$result->free();
-		$objUserUtil->Close();
-		exit;
-	}	
-@$result->free();
-$objUserUtil->Close();	
 
-//$stock = $objUserUtil->DBQuotes($search);
-//query, DBQuotes adds slashes to prevent SQL injection
-//not gonna worry about SQL injection right now
+$result = @$db->query($query);
+if($result) {						
+	echo "Insert complete with result: {$result}";
+}
+else {
+	header('HTTP/1.0 420 User Register Error');
+}	
+@$result->free();
+$objUserUtil->Close();
 
 //See this for password hashing: https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
 

@@ -13,13 +13,9 @@ $query = "SELECT username FROM users
 	$numrows = @$result->num_rows;
 	if($numrows == 0) {						
 		echo "Username not registered: {$numrows}";
-		exit;
 	}
 	else {
-		header('HTTP/1.0 404 User Test Error');				
-		@$result->free();
-		$objUserUtil->Close();
-		exit;
+		header('HTTP/1.0 404 User Test Error');	
 	}	
 @$result->free();
 $objUserUtil->Close();	

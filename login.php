@@ -33,6 +33,7 @@ require "search.php";
 					console.log(data);
 					$("#loginform").hide(400);
 					$("#logintitle").html("Login Success!").fadeIn(600);
+					$("#register").hide();
 					var currentUser = username;
 					console.log("Current User now set to: " + currentUser);
 					//Calls user page after 2 seconds when login successful

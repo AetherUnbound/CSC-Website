@@ -51,7 +51,15 @@ $(document).ready( function() {
 		ev.preventDefault();
 		logOut();
 	});
-	$("#logout").hide();
+	
+	//Hide certain menu options on page load
+	if(username != "") {
+		$("#login").hide();
+		$("#register").hide();
+	}
+	else {
+		$("#logout").hide();
+	}
 	
 	$("#register").click( function(ev) {
 		ev.preventDefault();
@@ -194,13 +202,17 @@ function loginPage() {
 }
 
 function logOut() {
-	//function to remove session variable and javascript variable for user
-	username = "";
-	//reset menu options
-	$("#login").show();
-	$("#logout").hide();
-	resetNav();
-	setHome();
+	//function to remove session variable and javascript variable for user	
+	$.post("AJAX\\logout.php", {user : username}, function(data) {
+		console.log("Username Reset: " + data);
+		username = "";
+		//reset menu options
+		$("#login").show();
+		$("#logout").hide();
+		$("#register").show();
+		resetNav();
+		setHome();
+	});
 }
 
 function setHome() {
