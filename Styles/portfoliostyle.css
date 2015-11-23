@@ -46,6 +46,20 @@
 	height: 0px;
 }
 
+#errordivinfo {
+	text-align: center;
+	color: red;
+	margin-bottom: 0px;
+	font-weight: 600;
+	height: 0px;
+}
+
+#porttotals {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	margin-top: 25px;
+	font-weight: 600;
+}
+
 #portcontainer h2 {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	position: relative;

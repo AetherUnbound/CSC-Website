@@ -1,4 +1,4 @@
-use bowdportdbenm_portfolio;
+use bowdenm_portfolio;
 select users.* FROM users WHERE username = "test" AND password = "test" LIMIT 1;
 select users.* FROM users WHERE username = "asdfasdf" AND password = "teasdfasdfst" LIMIT 1;
 select users.* FROM users;
@@ -12,12 +12,16 @@ DROP table portdb;
 insert into portdb values(NULL, "test", now(), "GE", "5", "16.88");
 use quotesdb;
 describe quotes;
-	SELECT bowdenm_portfolio.portdb.*, quotesdb.quotes.qLastSalePrice
-	FROM bowdenm_portfolio.portdb INNER JOIN (
-		SELECT quotesdb.quotes.*
-		FROM quotesdb.quotes
-		ORDER BY quotesdb.quotes.qQuoteDateTime DESC
-		LIMIT 1)
-	WHERE bowdenm_portfolio.portdb.pUsername = 'test'
-	AND bowdenm_portfolio.portdb.pSymbol = quotesdb.quotes.qSymbol
-	ORDER BY bowdenm_portfolio.portdb.pTimestamp DESC;
+SELECT quotesdb.quotes.*
+			FROM quotesdb.quotes
+			WHERE quotesdb.quotes.qSymbol = 'GOOG'
+			ORDER BY quotesdb.quotes.qQuoteDateTime DESC
+			LIMIT 1;
+SELECT quotesdb.symbols.* 
+		FROM quotesdb.symbols
+		WHERE quotesdb.symbols.symSymbol = 'goog'
+		LIMIT 1;
+INSERT INTO pordb VALUES (NULL, 'test', now(), 'GOOG', '1', '750');
+DELETE FROM portdb
+	WHERE pPurchasePrice LIKE '900.00'
+	LIMIT 1;

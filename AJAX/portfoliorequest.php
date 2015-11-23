@@ -54,36 +54,58 @@ $db = $objUserUtil->Open();
 $query = "
 	SELECT *
 	FROM portdb
-	WHERE pUsername = '" . $_SESSION['username'] . "';";
-
+	WHERE pUsername = '" . $_SESSION['username'] . "'
+	ORDER BY pTimestamp DESC;";
+$totalValue = 0;
 $result = @$db->query($query);
 if($result) { //print data
 	$numrows = @$result->num_rows;
 	$row = @$result->fetch_assoc();
-	if(isset($row))
-		extract($row);
-	do {		
-		$qQuery = "
-			SELECT quotesdb.quotes.*
-			FROM quotesdb.quotes
-			WHERE quotesdb.quotes.qSymbol = '" . $pSymbol . "'
-			ORDER BY quotesdb.quotes.qQuoteDateTime DESC
-			LIMIT 1;";
-		$qResult = @$db->query($qQuery);
-		$qData = @$qResult->fetch_assoc(); extract($qData);		
-		$percent = $percentDiff($pPurchasePrice, $qLastSalePrice);
-		$diff = $qLastSalePrice - $pPurchasePrice;
-		print "
+	if(isset($row)) {		
+		extract($row);	
+		do {		
+			$qQuery = "
+				SELECT quotesdb.quotes.*
+				FROM quotesdb.quotes
+				WHERE quotesdb.quotes.qSymbol = '" . $pSymbol . "'
+				ORDER BY quotesdb.quotes.qQuoteDateTime DESC
+				LIMIT 1;";
+			$qResult = @$db->query($qQuery);
+			$qData = @$qResult->fetch_assoc(); extract($qData);			
+			$percent = $percentDiff($pPurchasePrice, $qLastSalePrice);
+			$diff = $qLastSalePrice - $pPurchasePrice;
+			print "
+			<div class='row delete'>
+					<p class='cell left borderleft'>{$pSymbol}</p>
+					<p class='cell center date'>{$numDate(@$pTimestamp)}</p>
+					<p class='cell center'>{$pQuantity}</p>
+					<p class='cell center price'>{$numDec($pPurchasePrice)}</p>
+					<p class='cell center'>{$numDec($qLastSalePrice)}</p>
+					<p class='cell right borderright {$color($diff)}'>{$numDec($diff)}</p>
+			</div>";
+			$totalValue += $diff;
+			@$qResult->free();		
+		} while ($row = @$result->fetch_assoc() and extract($row));
+		print "<script>var totalValue = {$totalValue};\n console.log(totalValue);\n $('#totalVal').html('$'+totalValue.toFixed(2));\n ";
+		if(intval($totalValue) < 0) {
+			print "$('#totalVal').css('color' , 'red');\n";
+		}
+		else if (intval($totalValue > 0)) {
+			print "$('#totalVal').css('color' , 'green');\n";
+		}
+		print "</script>";
+	}
+	else {
+		print" 
 		<div class='row delete'>
-				<p class='cell left borderleft'>{$pSymbol}</p>
-				<p class='cell center date'>{$numDate(@$pTimestamp)}</p>
-				<p class='cell center'>{$pQuantity}</p>
-				<p class='cell center'>{$numDec($pPurchasePrice)}</p>
-				<p class='cell center'>{$numDec($qLastSalePrice)}</p>
-				<p class='cell right borderright {$color($diff)}'>{$numDec($diff)}</p>
+			<p class='cell left borderleft'>No Data</p>
+			<p class='cell center date'></p>
+			<p class='cell center'></p>
+			<p class='cell center price'></p>
+			<p class='cell center'></p>
+			<p class='cell right borderright '></p>
 		</div>";
-		@$qResult->free();		
-	} while ($row = @$result->fetch_assoc() and extract($row));
+	}
 }
 else {
 	header('HTTP/1.0 420 Critical Portfolio Error');

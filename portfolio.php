@@ -9,7 +9,10 @@ var currRow = "";
 var currIndex = "";
 var isRowFilled = false;
 var deleteFill = ' <p class="cell left borderleft delrow">Delete?</p> <p class="cell center date delrow portdeleteyes">Yes</p>	<p class="cell center delrow portdeleteno">No</p> <p class="cell center delrow"></p> <p class="cell center delrow"></p> <p class="cell right borderright delrow"></p> ';
-var deleteDictionary = {};
+//Dictionaries for the delete option
+var rowDict = {};
+var symbolDict = {};
+var priceDict = {};
 
 
 $("#porttabs a").click(function(ev) {
@@ -58,27 +61,13 @@ $("#portaddcancel").click(function(e) {
 });
 
 $("#portdata").click(function(e) {	
+	$("#errordivinfo").html("");
 	e.preventDefault();
 	console.log("What you clicked: " + $(e.target).html());
-	console.log("From parent symbol: " + $(e.target).parent().eq(0).eq(0).html());
+	console.log("Sibling Symbol: " + $(e.target).siblings(".borderleft").html());
 	currRow = $(e.target).parent().html();
 	currIndex = $(e.target).parent().index();
-	if(!(currIndex in deleteDictionary)) {
-		$(e.target).parent().addClass("delrow");
-		//console.log(currRow);
-		//console.log("Index: " + currIndex);
-		deleteDictionary[currIndex] = currRow;
-		//console.log("Index 0: " + deleteDictionary[0]);
-		//console.log("Data at currIndex: " + deleteDictionary[currIndex]);
-		$(e.target).parent().html(deleteFill);			
-	}
-	else if(currIndex in deleteDictionary) {
-		$(e.target).parent().html(deleteDictionary[currIndex]);
-		//console.log("Deleting " + deleteDictionary[currIndex]);
-		delete deleteDictionary[currIndex];
-	}
-	//TODO
-	/* if($(e.target).hasClass("portdeleteyes")) {
+	if($(e.target).hasClass("portdeleteyes")) {
 		console.log("Found a yes");
 		$.ajax({
 			type: "POST",
@@ -86,11 +75,42 @@ $("#portdata").click(function(e) {
 			url: "AJAX\\portfoliodelete.php",
 			data: {
 				user : username,
-				symbol : $(
-	} */
+				symbol : symbolDict[currIndex],
+				price : priceDict[currIndex]
+			},
+			success: function(data) {
+				console.log(data);
+				delete rowDict[currIndex];
+				delete symbolDict[currIndex];
+				delete priceDict[currIndex];
+				//reload the page once the delete is complete
+				portfolioPage();
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});		
+	}
+	if(!(currIndex in rowDict)) {
+		//$(e.target).parent().addClass("delrow");
+		//console.log(currRow);
+		//console.log("Index: " + currIndex);
+		rowDict[currIndex] = currRow;
+		symbolDict[currIndex] = $(e.target).siblings(".borderleft").html();
+		priceDict[currIndex] = $(e.target).siblings(".price").html();
+		console.log("Symbol: " + symbolDict[currIndex] + " Price: " + priceDict[currIndex]);
+		//console.log("Index 0: " + rowDict[0]);
+		//console.log("Data at currIndex: " + rowDict[currIndex]);
+		$(e.target).parent().html(deleteFill);			
+	}
+	else if(currIndex in rowDict) {
+		$(e.target).parent().html(rowDict[currIndex]);
+		//console.log("Deleting " + rowDict[currIndex]);
+		delete rowDict[currIndex];
+	}
 });
 
-$(document).keypress(function(e) {
+$(document).keydown(function(e) {
 	//if enter key is pressed and searching
 	$("#errordiv").html("");
 	if(e.which == 13 && !symFound) { 
@@ -203,6 +223,7 @@ function loadPortfolio() {
 		</div>
 	</div>
 	<div id="portinfo">
+	<div id="errordivinfo"></div>
 		<div style="margin-top: 30px"></div>
 		<div class="tablelayout ">
 			<div class="row title">
@@ -211,7 +232,7 @@ function loadPortfolio() {
 				<p class="cell center">Quantity</p>
 				<p class="cell center">Price</p>
 				<p class="cell center">Last</p>
-				<p class="cell center"><span class="dollar">$</span>|<span class="percent">%</span> G/L</p>
+				<p class="cell center"><span class="dollar">$</span><span class="percent" style="display: none">|%</span> G/L</p>
 			</div>
 		</div>		
 		<div class="tablelayout ">
@@ -222,6 +243,9 @@ function loadPortfolio() {
 		</div>
 		<div class="tablelayout ">
 			<hr class="hrbot">
+		</div>
+		<div id="porttotals"> 
+			Total Portfolio Gain/Loss: <span id="totalVal">0</span>
 		</div>
 	</div>
 	<div id="portedit">

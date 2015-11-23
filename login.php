@@ -12,7 +12,7 @@ require "search.php";
 		loginAJAX();
 	});
 	
-	$(document).keypress(function(e) {
+	$(document).keydown(function(e) {
 		//if fields have values and the enter key is pressed
 		if(e.which == 13 && $("#usernametext").val() && $("#passwordtext").val()) { 
 			console.log('You pressed enter!');
