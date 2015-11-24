@@ -17,6 +17,7 @@ var priceDict = {};
 
 $("#porttabs a").click(function(ev) {
 	ev.preventDefault();
+	$("#errordiv").html("");
 	console.log($(this).find("h2").attr('id'));
 	//switches the "active" class to the different tab
 	if($(this).find("h2").attr('id') == "port0") {
@@ -124,7 +125,7 @@ $(document).keydown(function(e) {
 	}
 	else if(e.which == 13) {
 		console.log("Edit port args empty");
-		$("#errordiv").html("Some of the forms are not filled");
+		//$("#errordiv").html("Some of the forms are not filled");
 	}
 });	
 
@@ -169,7 +170,7 @@ function portAddStock() {
 		success: function(data) {
 			console.log("Portfolio insertion successful");
 			$("#portedit").html("<p>Portfolio Addition Successful!</p>");
-			setTimeout(portfolioPage, 1000);
+			setTimeout(portfolioPage, 1500);
 		},
 		error: function(data) {
 			$("#portedit").html("<p style'color=red'>Portfolio Addition Failure</p>");
@@ -184,14 +185,24 @@ function checkInputs() {
 	$("#addprice").removeClass("notext");
 	if($("#addquantity").val() == "") {
 		$("#addquantity").addClass("notext");		
-		$("#errordiv").html("Some of the forms are not filled");
+		$("#errordiv").html("Quantity not entered");
 		return false;
 	}
 	else if($("#addprice").val() == "") {
 		$("#addprice").addClass("notext");		
-		$("#errordiv").html("Some of the forms are not filled");
+		$("#errordiv").html("Price not entered");
 		return false;
 	}
+	else if($("#addquantity").val() <= 0) {
+		$("#addquantity").addClass("notext");		
+		$("#errordiv").html("Quantity cannot be less than 0");
+		return false;
+	}
+	else if($("#addprice").val() <= 0) {
+		$("#addprice").addClass("notext");		
+		$("#errordiv").html("Price cannot be less than 0");
+		return false;
+	}		
 	return true;
 }
 
@@ -219,7 +230,7 @@ function loadPortfolio() {
 			<a href="#"><h2 id="port0" class="portactive">View Portfolio</h2></a>
 		</div>
 		<div class="portheader">
-			<a href="#"><h2 id="port1">Edit Portfolio</h2></a>
+			<a href="#"><h2 id="port1">Add a Stock</h2></a>
 		</div>
 	</div>
 	<div id="portinfo">

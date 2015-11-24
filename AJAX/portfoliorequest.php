@@ -74,19 +74,23 @@ if($result) { //print data
 			$qData = @$qResult->fetch_assoc(); extract($qData);			
 			$percent = $percentDiff($pPurchasePrice, $qLastSalePrice);
 			$diff = $qLastSalePrice - $pPurchasePrice;
+			$GL = $diff * $pQuantity;
 			print "
-			<div class='row delete'>
+			<div class='row delete' title='To delete a stock, click on the row you wish to delete'>
 					<p class='cell left borderleft'>{$pSymbol}</p>
 					<p class='cell center date'>{$numDate(@$pTimestamp)}</p>
 					<p class='cell center'>{$pQuantity}</p>
 					<p class='cell center price'>{$numDec($pPurchasePrice)}</p>
 					<p class='cell center'>{$numDec($qLastSalePrice)}</p>
-					<p class='cell right borderright {$color($diff)}'>{$numDec($diff)}</p>
+					<p class='cell right borderright {$color($diff)}'>{$numDec($GL)}</p>
 			</div>";
-			$totalValue += $diff;
+			$totalValue += $GL;
 			@$qResult->free();		
 		} while ($row = @$result->fetch_assoc() and extract($row));
-		print "<script>var totalValue = {$totalValue};\n console.log(totalValue);\n $('#totalVal').html('$'+totalValue.toFixed(2));\n ";
+		print '<script>//for totalvalue output
+				function numberWithCommas(x) {
+				return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");}</script>';
+		print "<script>var totalValue = {$totalValue};\n console.log(totalValue);\n $('#totalVal').html('$' + numberWithCommas(totalValue));\n ";
 		if(intval($totalValue) < 0) {
 			print "$('#totalVal').css('color' , 'red');\n";
 		}

@@ -4,7 +4,8 @@ require "UserUtil.php"; $objUserUtil = new UserUtil;
 //establish db connection 
 //have to set right parameters
 $db = $objUserUtil->Open();	
-$price = str_replace(',', '', $_POST['price']);
+$price = $_POST['price'];
+$price = number_format(floatval(str_replace(',', '', $price)), 2);
 
 
 $query = "DELETE FROM portdb
@@ -15,7 +16,7 @@ $query = "DELETE FROM portdb
 
 $result = @$db->query($query);
 if($result) {						
-	echo "Delete complete result: {$result}";
+	echo "Delete complete price: {$price}";
 }
 else {
 	header('HTTP/1.0 420 Portfolio Delete Error');
