@@ -83,11 +83,11 @@
   vertical-align:middle;
 }
 .tablelayout h3 {
-  text-align:center;
-  border-bottom: 4px solid white;
-  background-color: white;
-  color: #934e00;
-  line-height: 50px;  
+	text-align:center;
+	border-bottom: 4px solid white;
+	background-color: white;
+	color: #934e00;
+	line-height: 50px;  
 }
 
 .tablelayout h2 {
@@ -143,3 +143,23 @@
 	margin-top: 0px;
 }
 
+.histheader a {
+	font-family: Didot, 'Didot LT STD', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+	line-height: 40px;
+	text-align:center;
+	font-size: 22px;
+	font-weight: 600;
+	background-color: white;
+	color: #934e00;  
+	text-decoration: none;
+}
+
+.histactive {
+	/*border-bottom: 3px solid #934e00;*/
+	background-color: #535362 !important;
+	color: #FFFFFF!important;
+}
+
+#histtabs .cellnobord {
+	border-right: none;
+}

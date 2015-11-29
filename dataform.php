@@ -230,19 +230,55 @@ if(!empty($search))
 		if(isset($qLastSalePrice))
 			$printTable = true; //will still print the table if a symbol without data
 		print <<<EODHist1
-			<link href="Styles\\histtablestyle.css" rel="stylesheet" type="text/css">
+			<link href="Styles\\\histtablestyle.css" rel="stylesheet" type="text/css">
 			<div style="padding-bottom: 80px;"></div>
 			<div class="largescreentop"></div>
+			<script src="Scripts\graph.js"></script>
+			<script> 
+			$("#histtabs a").click(function(ev) {
+				ev.preventDefault();
+				console.log($(this).attr('id'));
+				//switches the "active" class to the different tab
+				if($(this).attr('id') == "hist0") {
+					$(this).addClass("histactive");
+					$("#histtabs a").eq(1).removeClass("histactive");
+					$("#graphdata").hide();
+					$("#histdata").show();
+				}
+				else { //if index == 1
+					$(this).addClass("histactive");
+					$("#histtabs a").eq(0).removeClass("histactive");
+					$("#histdata").hide();
+					console.log("Hist1 clicked");
+					$("#graphdata").show();						
+				}
+			});			
+			</script>
 			<div class="tablelayout ">
-		  <h1 class="cellnobord">{$forNull(@$symSymbol, true, true)}</h1>
+		  <h1 id="histsymbol" class="cellnobord">{$forNull(@$symSymbol, true, true)}</h1>
 		  <div class="cellnobord">
 		  
 		   <h3 class="tablelayout w100">{$forNull(@$symName, true)}</h3>		
 		  </div>	  
-		</div>
+		</div>			
+			<div class="tablelayout ">
+				<hr>
+			</div>
+			<div id="histtabs" class="tablelayout histheader">
+				<a href="#" id="hist0" class="cellnobord histactive">History</a>
+				<a href="#" id="hist1" class="cellnobord ">Graph</a>
+			</div>
 		<div class="tablelayout ">
 			<hr>
 		</div>
+		<span id="graphdata" style="display: none;">
+			<div class="tablelayout">
+				<div id="graphcontainer">
+				test
+				</div>
+			</div>
+		</span>
+		<span id="histdata">
 		<div class="tablelayout ">
 			<div class="row title">
 				<p class="cell center borderleft">Date</p>
@@ -281,6 +317,7 @@ EODHist1;
 				<div class="tablelayout ">
 					<hr class="hrbot">
 				</div>
+				</span>
 				<div class="thebottom"></div>	
 EODHist2;
 		}
