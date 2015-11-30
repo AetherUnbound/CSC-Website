@@ -31,7 +31,12 @@ session_start();
 	<meta name="viewport" content="width=device-width">
 	<?php //require "Scripts\DbUtil.php"; $objDBUtil = new DbUtil; ?>
 <!--<link href="Styles\searchstyle.css" rel="stylesheet" type="text/css">-->
-	
+	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={
+				'modules':[{
+					'name': 'visualization',
+					'version' : '1',
+					'packages': ['corechart']
+			}]}"></script>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <!--<script src="scripts.js"></script>-->
 	<script src="Scripts\scripts.js"></script>

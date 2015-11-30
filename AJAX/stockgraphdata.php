@@ -54,12 +54,12 @@ $data = array( array('Date', 'Price'));
 while ($r = $resultdata->fetch_assoc()){
 	$dt = new DateTime($r['qQuoteDateTime']);
 	$price = $r['qLastSalePrice'];
-	$tempArray = array($dt, $price);
+	$tempArray = array($dt->format('M j, y'), floatval($price));
 	//push value on data array
 	array_push($data, $tempArray);
 }
 //push data array onto JSON array 
-array_push($JSONobj, $data);
+$JSONobj['data'] = $data;
 print json_encode($JSONobj);	
 $resultdata->free();
 $db->close();

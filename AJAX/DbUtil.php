@@ -1,15 +1,14 @@
-<?php // inc/UserUtil.inc
-print "<!--UserUtil imported-->\n";
-class UserUtil
+<?php // inc/DbUtil.inc
+class DbUtil
 {
 	public $db = NULL;
 
 	// DB Connection Parameters: Modify for specific project
 	public $host = "cs.spu.edu";
-	public $user = "bowdenm"; // or individual MySQL user name
-	public $pwd = "dinglebrumbus"; // with quotesdb permissions
-	public $defaultDB = "bowdenm_portfolio";
-	function __construct() // constructor - not needed for UserUtil
+	public $user = "quotesdb"; // or individual MySQL user name
+	public $pwd = "quotesdb"; // with quotesdb permissions
+	public $defaultDB = "quotesdb";
+	function __construct() // constructor - not needed for DbUtil
 	{ }
 	// Connect to DBServer, Select specified or default DB
 	// If existing connection, then reset default database

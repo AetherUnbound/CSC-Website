@@ -230,29 +230,13 @@ if(!empty($search))
 		if(isset($qLastSalePrice))
 			$printTable = true; //will still print the table if a symbol without data
 		print <<<EODHist1
-			<link href="Styles\\\histtablestyle.css" rel="stylesheet" type="text/css">
+			<link href="Styles\\histtablestyle.css" rel="stylesheet" type="text/css">
 			<div style="padding-bottom: 80px;"></div>
 			<div class="largescreentop"></div>
 			<script src="Scripts\graph.js"></script>
+			
 			<script> 
-			$("#histtabs a").click(function(ev) {
-				ev.preventDefault();
-				console.log($(this).attr('id'));
-				//switches the "active" class to the different tab
-				if($(this).attr('id') == "hist0") {
-					$(this).addClass("histactive");
-					$("#histtabs a").eq(1).removeClass("histactive");
-					$("#graphdata").hide();
-					$("#histdata").show();
-				}
-				else { //if index == 1
-					$(this).addClass("histactive");
-					$("#histtabs a").eq(0).removeClass("histactive");
-					$("#histdata").hide();
-					console.log("Hist1 clicked");
-					$("#graphdata").show();						
-				}
-			});			
+			var inter = 30;						
 			</script>
 			<div class="tablelayout ">
 		  <h1 id="histsymbol" class="cellnobord">{$forNull(@$symSymbol, true, true)}</h1>
@@ -272,7 +256,13 @@ if(!empty($search))
 			<hr>
 		</div>
 		<span id="graphdata" style="display: none;">
-			<div class="tablelayout">
+			<div id="interval" class="tablelayout intheader">
+					<a href="#" id="30" class="cellnobord histactive">30 Days</a>
+					<a href="#" id="60" class="cellnobord ">60 Days</a>
+					<a href="#" id="180" class="cellnobord ">6 Months</a>
+					<a href="#" id="365" class="cellnobord " style="border-right: none">1 Year</a>
+				</div>
+			<div class="tablelayout">			
 				<div id="graphcontainer">
 				test
 				</div>
