@@ -3,7 +3,13 @@ function drawChart (object, width, height) {
 		title: object.symbol + " Stock Trend: " + object.interval + " Days",
 		titleTextStyle: {
 			fontSize: 22
-		},		
+		},
+		chartArea: {
+			height: '55%',
+			width: '82%',
+			left: '12%',
+			top: '20%'
+		},
 		vAxis: { 
 			minValue: object.minprice, 
 			maxValue: object.maxprice, 
@@ -89,6 +95,10 @@ $("#histtabs a").click(function(ev) {
 		$("#graphdata").show();						
 	}
 });
+
+/* $(window).resize( function() {
+	graphAJAX();
+}); */
 
 $("#interval a").click(function(ev) {
 	ev.preventDefault();
