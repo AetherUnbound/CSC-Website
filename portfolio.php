@@ -8,7 +8,7 @@ var symFound = false;
 var currRow = "";
 var currIndex = "";
 var isRowFilled = false;
-var deleteFill = ' <p class="cell left borderleft delrow">Delete?</p> <p class="cell center date delrow portdeleteyes">Yes</p>	<p class="cell center delrow portdeleteno">No</p> <p class="cell center delrow"></p> <p class="cell center delrow"></p> <p class="cell right borderright delrow"></p> ';
+var deleteFill = ' <p class="cell left borderleft delrow">Delete?</p> \n<p class="cell center date delrow portdeleteyes">Yes</p>	\n<p class="cell center delrow portdeleteno">No</p> \n<p class="cell center delrow"></p> <p class="cell center delrow"></p> \n<p class="cell right borderright delrow"></p> ';
 //Dictionaries for the delete option
 var rowDict = {};
 var symbolDict = {};
@@ -67,7 +67,10 @@ $("#portdata").click(function(e) {
 	console.log("What you clicked: " + $(e.target).html());
 	console.log("Sibling Symbol: " + $(e.target).siblings(".borderleft").html());
 	currRow = $(e.target).parent().html();
+	console.log("My parent: " + $(e.target).parent().html());
+	console.log("==Symbol Test== : " + $(e.target).parent().find("p").eq(0).html())
 	currIndex = $(e.target).parent().index();
+	console.log("Current Index: " + currIndex);
 	if($(e.target).hasClass("portdeleteyes")) {
 		console.log("Found a yes");
 		$.ajax({
@@ -97,8 +100,8 @@ $("#portdata").click(function(e) {
 		//console.log(currRow);
 		//console.log("Index: " + currIndex);
 		rowDict[currIndex] = currRow;
-		symbolDict[currIndex] = $(e.target).siblings(".borderleft").html();
-		priceDict[currIndex] = $(e.target).siblings(".price").html();
+		symbolDict[currIndex] = $(e.target).parent().find("p").eq(0).html();
+		priceDict[currIndex] = $(e.target).parent().find("p").eq(3).html();
 		console.log("Symbol: " + symbolDict[currIndex] + " Price: " + priceDict[currIndex]);
 		//console.log("Index 0: " + rowDict[0]);
 		//console.log("Data at currIndex: " + rowDict[currIndex]);
